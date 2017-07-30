@@ -26,36 +26,77 @@ describe('GET /api/posts', async () => {
   });
 });
 
+describe('POST /api/posts', () => {
+  // Just incase
+  before(async () => {
+    await cleanDatabase();
+  });
 
-// 
-// describe('POST /api/posts', () => {
-// 
-// });
-// 
-// describe('GET /api/posts/:id', () => {
-// 
-// });
-// 
-// describe('DELETE /api/posts/:id', () => {
-// 
-// });
-// 
-// describe('POST /users/create', () => {
-//   afterEach(async () => {
-//     await dropUsersDb();
-//   });
-// 
-//   it('Saves a valid new User successfully', async () => {
-//     const user = {
-//       username: 'testuser1',
-//       password: 'Testuser1password',
-//       passwordConfirmation: 'Testuser1password',
-//       email: 'testuseremail@test.com',
-//     };
-// 
-//     const res = await request(app)
-//       .post('/users/create')
-//       .send({ user });
-// 
-//     expect(res.status).to.equal(200);
-//   });
+  after(async () => {
+    await cleanDatabase();
+  });
+
+  it('Successfully creates a blog post', async () => {
+    const res = await request(api)
+      .post('/api/posts')
+      .send({
+        title: 'testTitle',
+        _id: 1,
+        category: 'testCategory',
+        content: 'testContent',
+      });
+
+    expect(res.status).to.equal(200);
+    expect(res.headers['content-type']).to.equal('application/json');
+  });
+});
+
+describe('GET /api/posts/:id', () => {
+  before(async () => {
+    await cleanDatabase();
+    await createPost();
+  });
+
+  after(async () => {
+    await cleanDatabase();
+  });
+
+  it('Successfully retrieves a blog post by _id', async () => {
+    const res = await request(api)
+      .post('/api/posts')
+      .send({
+        title: 'testTitle',
+        _id: 1,
+        category: 'testCategory',
+        content: 'testContent',
+      });
+
+    expect(res.status).to.equal(200);
+    expect(res.headers['content-type']).to.equal('application/json');
+  });
+});
+
+describe('DELETE /api/posts/:id', () => {
+  before(async () => {
+    await cleanDatabase();
+    await createPost();
+  });
+
+  after(async () => {
+    await cleanDatabase();
+  });
+
+  it('Successfully deletes a blog post by _id', async () => {
+    const res = await request(api)
+      .post('/api/posts')
+      .send({
+        title: 'testTitle',
+        _id: 1,
+        category: 'testCategory',
+        content: 'testContent',
+      });
+
+    expect(res.status).to.equal(200);
+    expect(res.headers['content-type']).to.equal('application/json');
+  });
+});

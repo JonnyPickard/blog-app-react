@@ -6,12 +6,11 @@ async function cleanDatabase() {
   let db;
   try {
     db = await MongoClient.connect(mongoUrl);
-    await db.collection('blogposts').drop();
-    console.log('Successfully cleaned database');
+    const res = await db.collection('blogposts').drop();
+    console.log('Successfully cleaned database: ', res);
   } catch (err) {
     console.log(err);
   }
-
   if (db) db.close();
 }
 

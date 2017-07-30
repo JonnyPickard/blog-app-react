@@ -22,10 +22,12 @@ app.get('/api/posts', async (req, res) => {
   res.json(posts);
 });
 
-app.post('/api/posts', (req, res) => {
+app.post('/api/posts', async (req, res) => {
   try {
-    createOne(req.body);
+    const post = await createOne(req.body);
+    res.json(post);
   } catch (err) {
+    console.log(err);
     res.send('The post could not be saved successfully');
   }
 });
@@ -34,6 +36,7 @@ app.get('/api/posts/:id', (req, res) => {
   try {
     getOneById(req.body);
   } catch (err) {
+    console.log(err);
     res.send('The post you have requested does not exist');
   }
 });
@@ -42,6 +45,7 @@ app.delete('/api/posts/:id', (req, res) => {
   try {
     deleteOneById(req.body);
   } catch (err) {
+    console.log(err);
     res.send('The post you have requested to delete does not exist');
   }
 });
