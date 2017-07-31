@@ -1,24 +1,22 @@
 const mongoose = require('mongoose');
-const blogPostSchema = require('../../blog-post-model/schema');
+
+const blogPostSchema = require('../../models/blog-post/schema');
 
 const BlogPost = mongoose.model('BlogPost', blogPostSchema, 'blogposts');
 
-const createPost = async () => {
+const createPost = async (_id = 1) => {
   const index = '1';
 
   try {
     await BlogPost.create({
-      _id: 1,
+      _id,
       title: index,
       categories: index,
       content: index,
     });
-    console.log('Successfully created a single post');
   } catch (err) {
-    console.log(err);
+    throw err;
   }
-
-  mongoose.disconnect();
 };
 
 module.exports = createPost;

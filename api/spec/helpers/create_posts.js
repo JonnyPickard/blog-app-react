@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const blogPostSchema = require('../../blog-post-model/schema');
+const blogPostSchema = require('../../models/blog-post/schema');
 
 const BlogPost = mongoose.model('BlogPost', blogPostSchema, 'blogposts');
 
@@ -16,12 +16,9 @@ const mockPosts =
 const createManyPosts = async () => {
   try {
     await BlogPost.create(mockPosts);
-    console.log('Successfully created many posts');
   } catch (err) {
-    console.log(err);
+    throw err;
   }
-
-  mongoose.disconnect();
 };
 
 module.exports = createManyPosts;
