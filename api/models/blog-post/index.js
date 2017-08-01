@@ -6,7 +6,7 @@ const BlogPost = mongoose.model('BlogPost', blogPostSchema, 'blogposts');
 const getMany = async () => {
   const post = await BlogPost
     .find()
-    .sort({ created_at: 1, _id: 1 })
+    .sort({ created_at: 1 })
     .limit(40)
     .exec();
 
