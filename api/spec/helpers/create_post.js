@@ -4,16 +4,17 @@ const blogPostSchema = require('../../models/blog-post/schema');
 
 const BlogPost = mongoose.model('BlogPost', blogPostSchema, 'blogposts');
 
-const createPost = async (_id = 1) => {
+const createPost = async () => {
   const index = '1';
 
   try {
-    await BlogPost.create({
-      _id,
+    const post = await BlogPost.create({
       title: index,
       categories: index,
       content: index,
     });
+
+    return post;
   } catch (err) {
     throw err;
   }

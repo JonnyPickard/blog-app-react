@@ -9,6 +9,7 @@ const getMany = async () => {
     .sort({ created_at: 1, _id: 1 })
     .limit(40)
     .exec();
+
   return post;
 };
 
@@ -20,13 +21,19 @@ const getOneById = async (_id) => {
 };
 
 const createOne = async (postObject) => {
-  await new BlogPost(postObject)
+  const post = await new BlogPost(postObject)
     .save();
+
+  return post;
 };
 
 const deleteOneById = async (_id) => {
-  await BlogPost
-    .deleteOne({ _id });
+  const post = await BlogPost.find({ _id });
+  await BlogPost.find({ _id })
+    .remove()
+    .exec();
+
+  return post;
 };
 
 module.exports = {

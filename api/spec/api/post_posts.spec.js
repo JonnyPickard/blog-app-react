@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const request = require('supertest');
 const api = require('../../');
 
-const { cleanDatabase, createPost } = require('../helpers');
+const { cleanDatabase } = require('../helpers');
 
 describe('POST /api/posts', async () => {
   after(async () => {
@@ -10,39 +10,17 @@ describe('POST /api/posts', async () => {
   });
 
   it('Successfully creates a blog post & returns 200', async () => {
-    const res = await request(api)
+    const { body } = await request(api)
       .post('/api/posts')
       .send({
         title: 'testTitle',
-        _id: 1,
-        category: 'testCategory',
+        categories: 'testCategory',
         content: 'testContent',
       });
 
-    expect(res.status).to.equal(200);
-  });
-});
-
-describe('POST /api/posts with duplicate _id post', async () => {
-  before(async () => {
-    await createPost();
-  });
-
-  after(async () => {
-    await cleanDatabase();
-  });
-
-  it('Does not create a blog post & returns 400', async () => {
-    const res = await request(api)
-      .post('/api/posts')
-      .send({
-        title: 'testTitle',
-        _id: 1,
-        category: 'testCategory',
-        content: 'testContent',
-      });
-
-    expect(res.status).to.equal(400);
+    expect(body.title).to.equal('testTitle');
+    expect(body.categories).to.equal('testCategory');
+    expect(body.content).to.equal('testContent');
   });
 });
 

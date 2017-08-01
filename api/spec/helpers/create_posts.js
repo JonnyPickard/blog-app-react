@@ -7,7 +7,6 @@ const mockPosts =
   Array(40)
     .fill(0)
     .map((current, index) => ({
-      _id: index,
       title: index.toString(),
       categories: index.toString(),
       content: index.toString(),

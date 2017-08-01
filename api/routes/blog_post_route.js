@@ -7,7 +7,7 @@ const {
   deleteOneById,
 } = require('../models/blog-post');
 
-route.get('/api/posts', async (req, res) => {
+route.get('/api/posts', async (_, res) => {
   try {
     const posts = await getMany();
     return res.json(posts);
@@ -16,30 +16,36 @@ route.get('/api/posts', async (req, res) => {
   }
 });
 
-route.post('/api/posts', async (req, res) => {
+route.post('/api/posts', async ({ body }, res) => {
   try {
-    await createOne(req.body);
-    return res.sendStatus(200);
-  } catch (err) {
-    return res.sendStatus(400);
-  }
-});
-
-route.get('/api/posts/:id', async (req, res) => {
-  try {
-    const post = await getOneById(req.params.id);
+    const post = await createOne(body);
     return res.json(post);
   } catch (err) {
-    return res.status(400).send('The post you have requested does not exist');
+    return res.sendStatus(400);
   }
 });
 
-route.delete('/api/posts/:id', async (req, res) => {
+route.get('/api/posts/:id', async ({ params }, res) => {
   try {
-    await deleteOneById(req.params.id);
-    return res.sendStatus(200);
+    const post = await getOneById(params.id);
+    return res.json(post);
   } catch (err) {
-    return res.sendStatus(400);
+    return res.status(404).json({
+      error: 'Not Found',
+      status: '404',
+    });
+  }
+});
+
+route.delete('/api/posts/:id', async ({ params }, res) => {
+  try {
+    const post = await deleteOneById(params.id);
+    return res.json(post);
+  } catch (err) {
+    return res.status(404).json({
+      error: 'Not Found',
+      status: '404',
+    });
   }
 });
 

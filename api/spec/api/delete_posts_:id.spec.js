@@ -5,21 +5,22 @@ const api = require('../../');
 const { createPost, getPostById } = require('../helpers');
 
 describe('DELETE /api/posts/:id', () => {
-  const _id = 1;
+  let postId;
 
   before(async () => {
-    await createPost({ _id });
+    const { _id } = await createPost();
+    postId = _id;
   });
 
   it('Successfully deletes a blog post by _id', async () => {
     const res = await request(api)
-      .delete('/api/posts/1');
+      .delete(`/api/posts/${postId}`);
 
-    const post = await getPostById(_id);
+    const post = await getPostById(postId);
 
     expect(!post);
     expect(res.status).to.equal(200);
-    expect(res.headers['content-type']).to.equal('text/plain; charset=utf-8');
+    expect(res.headers['content-type']).to.equal('application/json; charset=utf-8');
   });
 });
 
@@ -28,6 +29,9 @@ describe('DELETE /api/posts/:id with a bad _id', () => {
     const res = await request(api)
       .delete('/api/posts/a');
 
-    expect(res.status).to.equal(400);
+    expect(res.status).to.equal(404);
+    expect(res.headers['content-type']).to.equal('application/json; charset=utf-8');
+    expect(res.body.status).to.equal('404');
+    expect(res.body.error).to.equal('Not Found');
   });
 });

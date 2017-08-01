@@ -1,10 +1,9 @@
 const { Schema } = require('mongoose');
 
 const blogPostSchema = new Schema({
-  _id: { type: Number, unique: true },
-  title: { type: String },
-  categories: { type: String },
-  content: { type: String },
+  title: { type: String, required: true },
+  categories: { type: String, required: true },
+  content: { type: String, required: true },
   created_at: { type: Date, default: Date.now },
 });
 
