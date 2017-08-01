@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const blogPostSchema = require('../../models/blog-post/schema');
 
 const BlogPost = mongoose.model('BlogPost', blogPostSchema, 'blogposts');

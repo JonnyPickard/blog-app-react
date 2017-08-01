@@ -5,24 +5,21 @@ const mongoose = require('mongoose');
 
 const blogPostRoute = require('./routes/blog_post_route');
 
-const port = process.env.PORT || 3000;
+const { NODE_ENV, PORT = 3000 } = process.env;
 
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost:27017/blogapp', (err) => { if (err) console.log(err); });
+mongoose.connect('mongodb://localhost:27017/blogapp').catch(err => console.log(err));
 
 const app = express();
 
-app.use(logger('dev'));
+if (NODE_ENV === 'dev') app.use(logger('dev'));
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', blogPostRoute);
 
-const server = app.listen(port, () => {
-  if (process.env.NODE_ENV === 'test') server.close();
-
-  console.log('App listening on port', port);
+app.listen(PORT, () => {
+  console.log('App listening on port:', PORT);
 });
-
 
 module.exports = app;

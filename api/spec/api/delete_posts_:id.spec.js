@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const request = require('supertest');
-const api = require('../../');
 
+const api = require('../../');
 const { createPost, getPostById } = require('../helpers');
 
 describe('DELETE /api/posts/:id', () => {
@@ -25,7 +25,7 @@ describe('DELETE /api/posts/:id', () => {
 });
 
 describe('DELETE /api/posts/:id with a bad _id', () => {
-  it('Does not delete a post & returns 400', async () => {
+  it('Does not delete a post & returns 404', async () => {
     const res = await request(api)
       .delete('/api/posts/a');
 

@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const request = require('supertest');
-const api = require('../../');
 
+const api = require('../../');
 const { cleanDatabase } = require('../helpers');
 
 describe('POST /api/posts', async () => {

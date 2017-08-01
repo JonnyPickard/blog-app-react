@@ -13,7 +13,6 @@ const createPost = async () => {
       categories: index,
       content: index,
     });
-
     return post;
   } catch (err) {
     throw err;

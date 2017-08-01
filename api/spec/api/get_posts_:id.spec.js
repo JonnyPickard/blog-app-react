@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const request = require('supertest');
-const api = require('../../');
 
+const api = require('../../');
 const { cleanDatabase, createPost } = require('../helpers');
 
 describe('GET /api/posts/:id', () => {
@@ -28,7 +28,7 @@ describe('GET /api/posts/:id', () => {
 });
 
 describe('GET /api/posts/:id non existent post', () => {
-  it('Does not retrieve a blog post if it does not exist', async () => {
+  it('Does not retrieve a blog post & returns a 404', async () => {
     const res = await request(api)
       .get('/api/posts/fake_post');
 
