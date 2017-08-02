@@ -9,6 +9,7 @@ const {
 
 route.get('/api/posts', async (_, res) => {
   try {
+    // TODO: Validate JWT given header func that throws
     const posts = await getMany();
     return res.json(posts);
   } catch (err) {
