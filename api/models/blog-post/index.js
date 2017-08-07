@@ -30,9 +30,11 @@ const createOne = async (postObject) => {
 
 const deleteOneById = async (_id) => {
   const post = await BlogPost.find({ _id });
+  console.log(post);
   await BlogPost.find({ _id })
     .remove()
     .exec();
+  console.log(post);
 
   return post;
 };

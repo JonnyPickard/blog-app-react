@@ -13,12 +13,14 @@ describe('DELETE /api/posts/:id', () => {
   });
 
   it('Successfully deletes a blog post by _id', async () => {
+    // Delete route
     const res = await request(api)
       .delete(`/api/posts/${postId}`);
 
+    // Test post no longer exists
     const post = await getPostById(postId);
 
-    expect(!post);
+    expect(post).to.equal(null);
     expect(res.status).to.equal(200);
     expect(res.headers['content-type']).to.equal('application/json; charset=utf-8');
   });
