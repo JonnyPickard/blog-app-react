@@ -7,11 +7,11 @@ const RateLimit = require('express-rate-limit');
 const log = require('./config/logger');
 const { blogPostRoute, healthCheckRoute } = require('./routes');
 
-const { NODE_ENV, PORT = 3000 } = process.env;
+const { NODE_ENV, PORT = 3000, MONGODB_URI } = process.env;
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost:27017/blogapp')
+  .connect(MONGODB_URI || 'mongodb://localhost:27017/blogapp')
   .catch(err => log('error', err));
 
 const app = express();
