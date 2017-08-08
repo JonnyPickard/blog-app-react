@@ -8,7 +8,7 @@ const {
   deleteOneById,
 } = require('../models/blog-post');
 
-route.get('/api/posts', async (_, res) => {
+route.get('/posts', async (_, res) => {
   try {
     const posts = await getMany();
     return res.json(posts);
@@ -18,7 +18,7 @@ route.get('/api/posts', async (_, res) => {
   }
 });
 
-route.post('/api/posts', async ({ body }, res) => {
+route.post('/posts', async ({ body }, res) => {
   try {
     const post = await createOne(body);
     return res.json(post);
@@ -28,7 +28,7 @@ route.post('/api/posts', async ({ body }, res) => {
   }
 });
 
-route.get('/api/posts/:id', async ({ params }, res) => {
+route.get('/posts/:id', async ({ params }, res) => {
   try {
     const post = await getOneById(params.id);
     return res.json(post);
@@ -41,7 +41,7 @@ route.get('/api/posts/:id', async ({ params }, res) => {
   }
 });
 
-route.delete('/api/posts/:id', async ({ params }, res) => {
+route.delete('/posts/:id', async ({ params }, res) => {
   try {
     const post = await deleteOneById(params.id);
     return res.json(post);

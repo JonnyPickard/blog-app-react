@@ -1,8 +1,8 @@
 const { expect } = require('chai');
 const request = require('supertest');
 
-const api = require('../../');
-const { cleanDatabase, createPost } = require('../helpers');
+const api = require('../../../');
+const { cleanDatabase, createPost } = require('../../helpers');
 
 describe('GET /api/posts/:id', () => {
   let postId;

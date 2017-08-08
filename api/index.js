@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const RateLimit = require('express-rate-limit');
 
 const log = require('./config/logger');
-const blogPostRoute = require('./routes/blog_post_route');
+const { blogPostRoute, healthCheckRoute } = require('./routes');
 
 const { NODE_ENV, PORT = 3000 } = process.env;
 
@@ -26,7 +26,8 @@ app.use(new RateLimit({
 
 app.use(bodyParser.json());
 
-app.use('/', blogPostRoute);
+app.use('/api', blogPostRoute);
+app.use('/private', healthCheckRoute);
 
 app.listen(PORT, () => {
   log('info', `App listening on port: ${PORT}`);

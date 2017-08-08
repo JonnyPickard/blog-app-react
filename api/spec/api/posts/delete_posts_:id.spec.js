@@ -1,8 +1,8 @@
 const { expect } = require('chai');
 const request = require('supertest');
 
-const api = require('../../');
-const { createPost, getPostById } = require('../helpers');
+const api = require('../../../');
+const { createPost, getPostById } = require('../../helpers');
 
 describe('DELETE /api/posts/:id', () => {
   let postId;
