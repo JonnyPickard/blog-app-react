@@ -9,7 +9,8 @@
     "start:api": "node ./api/index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
-    "test:api": "NODE_ENV=test node_modules/.bin/mocha --recursive ./api/"
+    "test:api": "NODE_ENV=test node_modules/.bin/mocha --recursive ./api/",
+    "test:api_debug": "NODE_ENV=debug node_modules/.bin/mocha --recursive ./api/"
   },
   "author": "",
   "license": "ISC",
