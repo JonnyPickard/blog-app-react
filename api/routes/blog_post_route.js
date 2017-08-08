@@ -9,7 +9,6 @@ const {
 
 route.get('/api/posts', async (_, res) => {
   try {
-    // TODO: Validate JWT given header func that throws
     const posts = await getMany();
     return res.json(posts);
   } catch (err) {
@@ -40,9 +39,7 @@ route.get('/api/posts/:id', async ({ params }, res) => {
 
 route.delete('/api/posts/:id', async ({ params }, res) => {
   try {
-    console.log(params);
     const post = await deleteOneById(params.id);
-    console.log(post);
     return res.json(post);
   } catch (err) {
     return res.status(404).json({
