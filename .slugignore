@@ -1,6 +1,11 @@
-*
-
-!/.gitignore
-!package.json
-!api
-!Procfile
+node_modules
+src
+style
+test
+.babelrc
+.eslintrc.js
+.notes.md
+.index.html
+README.md
+webpack.config.js
+yarn.lock
