@@ -19,8 +19,8 @@ describe('DELETE /api/posts/:id', () => {
 
     // Test post no longer exists
     const post = await getPostById(postId);
-
     expect(post).to.equal(null);
+
     expect(res.status).to.equal(200);
     expect(res.headers['content-type']).to.equal('application/json; charset=utf-8');
   });

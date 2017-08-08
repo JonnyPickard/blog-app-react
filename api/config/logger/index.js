@@ -5,7 +5,10 @@ switch (process.env.NODE_ENV) {
     winston.remove(winston.transports.Console);
     break;
   case 'production':
-    winston.add(winston.transports.File, { filename: 'error.log' });
+    winston.add(winston.transports.File, {
+      filename: 'api/logs/error_log.json',
+      json: true,
+    });
     break;
   default:
 }
