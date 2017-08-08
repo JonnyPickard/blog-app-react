@@ -6,6 +6,7 @@
   "repository": "",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "start:api": "node ./api/index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
     "test:api": "NODE_ENV=test node_modules/.bin/mocha --recursive ./api/"
@@ -46,6 +47,7 @@
     "react-redux": "4.3.0",
     "react-router": "^2.0.1",
     "redux": "^3.0.4",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "winston": "^2.3.1"
   }
 }

@@ -13,7 +13,7 @@ describe('DELETE /api/posts/:id', () => {
   });
 
   it('Successfully deletes a blog post by _id', async () => {
-    // Delete route
+    // Delete post by id route
     const res = await request(api)
       .delete(`/api/posts/${postId}`);
 

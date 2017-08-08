@@ -1,4 +1,5 @@
 const route = require('express').Router();
+const { log } = require('winston');
 
 const {
   getMany,
@@ -12,6 +13,7 @@ route.get('/api/posts', async (_, res) => {
     const posts = await getMany();
     return res.json(posts);
   } catch (err) {
+    log('warn', err);
     return res.send(400);
   }
 });
@@ -21,6 +23,7 @@ route.post('/api/posts', async ({ body }, res) => {
     const post = await createOne(body);
     return res.json(post);
   } catch (err) {
+    log('warn', err);
     return res.sendStatus(400);
   }
 });
@@ -30,6 +33,7 @@ route.get('/api/posts/:id', async ({ params }, res) => {
     const post = await getOneById(params.id);
     return res.json(post);
   } catch (err) {
+    log('warn', err);
     return res.status(404).json({
       error: 'Not Found',
       status: '404',
@@ -42,6 +46,7 @@ route.delete('/api/posts/:id', async ({ params }, res) => {
     const post = await deleteOneById(params.id);
     return res.json(post);
   } catch (err) {
+    log('warn', err);
     return res.status(404).json({
       error: 'Not Found',
       status: '404',
