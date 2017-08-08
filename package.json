@@ -4,6 +4,9 @@
   "description": "Simple starter package for Redux with React and Babel support",
   "main": "index.js",
   "repository": "",
+  "engines": {
+    "node": "8"
+  },
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "start:api": "node ./api/index.js",
