@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 
 import { fetchPosts } from '../actions';
 
@@ -9,10 +10,23 @@ class PostsIndex extends Component {
     this.props.fetchPosts();
   }
 
+  renderPosts() {
+    return (
+      _.map(this.props.posts, post => (
+        <li className="list-group-item" key={post._id}>
+          {post.title}
+        </li>
+      ))
+    );
+  }
+
   render() {
     return (
       <div>
-        Posts Index
+        <h3>Posts</h3>
+        <ul className="list-group">
+          {this.renderPosts()}
+        </ul>
       </div>
     );
   }
@@ -20,6 +34,7 @@ class PostsIndex extends Component {
 
 PostsIndex.propTypes = {
   fetchPosts: PropTypes.func.isRequired,
+  posts: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
