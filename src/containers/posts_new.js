@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-class PostsNew extends Component {
-  renderTextInputField({ input, label }) {
-    return (
-      <div className="form-group">
-        <label htmlFor={label}>{label}</label>
-        <input
-          className="form-control"
-          type="text"
-          {...input}
-        />
-      </div>
-    );
-  }
+const styles = {
+  alertStyle: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginTop: 10,
+    marginBotton: 10,
+  },
+};
 
-  renderTextAreaField({ input, label }) {
+class PostsNew extends Component {
+  renderField({ input, label, meta, textArea }) {
+    const textarea = (
+      <textarea
+        className="form-control"
+        type="text"
+        {...input}
+      />);
+
+    const inputfield = (
+      <input
+        className="form-control"
+        type="text"
+        {...input}
+      />);
+
     return (
       <div className="form-group">
         <label htmlFor={label}>{label}</label>
-        <textarea
-          className="form-control"
-          type="text"
-          {...input}
-        />
+        <div>
+          { textArea ? textarea : inputfield }
+        </div>
+        <div style={styles.alertStyle} className="alert alert-danger">
+          {meta.error}
+        </div>
       </div>
     );
   }
@@ -36,19 +47,21 @@ class PostsNew extends Component {
           <Field
             label="Title"
             name="title"
-            component={this.renderTextInputField}
+            component={this.renderField}
           />
           <Field
             label="Categories"
             name="categories"
-            component={this.renderTextInputField}
+            component={this.renderField}
           />
           <Field
             label="Post Content"
             name="content"
-            component={this.renderTextAreaField}
+            component={this.renderField}
+            textArea
           />
         </form>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </div>
     );
   }
@@ -62,11 +75,11 @@ function validate(values) {
   }
 
   if (!values.categories) {
-    errors.title = 'Enter some categories!';
+    errors.categories = 'Enter some categories!';
   }
 
   if (!values.content) {
-    errors.title = 'Enter some content!';
+    errors.content = 'Enter some content!';
   }
 
   return errors;
