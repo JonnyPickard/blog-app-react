@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
@@ -23,10 +24,26 @@ class PostsIndex extends Component {
   render() {
     return (
       <div>
-        <h3>Posts</h3>
-        <ul className="list-group">
-          {this.renderPosts()}
-        </ul>
+        <div>
+
+          <div className="row" style={{ paddingBottom: 10 }}>
+
+            <div className="col-md-6 text-center">
+              <h3>Posts</h3>
+            </div>
+
+            <div className="col-md-6 text-center">
+              <Link style={{ float: 'right' }} className="pull-right btn btn-primary" to="/posts/new">
+                  Add a Post
+              </Link>
+            </div>
+
+          </div>
+
+          <ul className="list-group">
+            {this.renderPosts()}
+          </ul>
+        </div>
       </div>
     );
   }

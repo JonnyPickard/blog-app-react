@@ -15,11 +15,15 @@ const styles = {
   divStyles: {
     paddingTop: 10,
   },
+  headingStyle: {
+    paddingBottom: 10,
+  },
 };
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <div style={styles.divStyles}>
+      <h1 style={styles.headingStyle}>Bloggit</h1>
       <BrowserRouter>
         <div>
           <Switch>
