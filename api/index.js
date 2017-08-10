@@ -3,6 +3,7 @@ const morganLogger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const RateLimit = require('express-rate-limit');
+const cors = require('cors');
 
 const log = require('./config/logger');
 const { blogPostRoute, healthCheckRoute } = require('./routes');
@@ -30,11 +31,7 @@ app.use(new RateLimit({
 
 app.use(bodyParser.json());
 
-app.all('/', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-  next();
-});
+app.use(cors());
 
 app.use('/api', blogPostRoute);
 app.use('/private', healthCheckRoute);
