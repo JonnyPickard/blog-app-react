@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import PropTypes from 'prop-types';
 
 const styles = {
   alertStyle: {
@@ -11,7 +12,20 @@ const styles = {
 };
 
 class PostsNew extends Component {
-  renderField({ input, label, meta, textArea }) {
+  constructor(props) {
+    super(props);
+
+    this.onSubmit.bind(this);
+  }
+
+  onSubmit(values) {
+    console.log('heretitlehere');
+    console.log(values);
+  }
+
+  renderField({ input, label, meta: { touched, error }, textArea }) {
+    const className = `form-group ${touched && error ? 'has-danger' : ''}`;
+
     const textarea = (
       <textarea
         className="form-control"
@@ -26,24 +40,30 @@ class PostsNew extends Component {
         {...input}
       />);
 
+    const alert = (
+      <div style={styles.alertStyle} className="alert alert-danger">
+        {touched ? error : ''}
+      </div>
+    );
+
     return (
-      <div className="form-group">
+      <div className={className}>
         <label htmlFor={label}>{label}</label>
         <div>
-          { textArea ? textarea : inputfield }
+          {textArea ? textarea : inputfield}
         </div>
-        <div style={styles.alertStyle} className="alert alert-danger">
-          {meta.error}
-        </div>
+        {touched && error ? alert : ''}
       </div>
     );
   }
 
   render() {
+    const { handleSubmit } = this.props;
+
     return (
       <div>
         <h3 style={{ paddingBottom: 10 }}>New Post</h3>
-        <form>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
           <Field
             label="Title"
             name="title"
@@ -60,8 +80,8 @@ class PostsNew extends Component {
             component={this.renderField}
             textArea
           />
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
-        <button type="submit" className="btn btn-primary">Submit</button>
       </div>
     );
   }
@@ -84,6 +104,10 @@ function validate(values) {
 
   return errors;
 }
+
+PostsNew.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 export default reduxForm({
   validate,

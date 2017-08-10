@@ -28,10 +28,12 @@ class PostsIndex extends Component {
 
           <div className="row" style={{ paddingBottom: 10 }}>
 
+            {/* ListSubtitle */}
             <div className="col-md-6 text-center">
               <h3>Posts</h3>
             </div>
 
+            {/* ButtonNewPost */}
             <div className="col-md-6 text-center">
               <Link style={{ float: 'right' }} className="pull-right btn btn-primary" to="/posts/new">
                   Add a Post
@@ -40,6 +42,7 @@ class PostsIndex extends Component {
 
           </div>
 
+          {/* PostList */}
           <ul className="list-group">
             {this.renderPosts()}
           </ul>
