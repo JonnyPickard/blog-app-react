@@ -36,6 +36,7 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-preset-stage-1": "^6.1.18",
     "body-parser": "^1.17.2",
     "eslint": "^4.3.0",
@@ -49,8 +50,9 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "4.3.0",
-    "react-router": "^4.0.0",
+    "react-router-dom": "^4.0.0",
     "redux": "^3.0.4",
+    "redux-promise": "^0.5.3",
     "supertest": "^3.0.0",
     "winston": "^2.3.1"
   }
