@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const styles = {
@@ -81,6 +82,7 @@ class PostsNew extends Component {
             textArea
           />
           <button type="submit" className="btn btn-primary">Submit</button>
+          <Link style={{ marginLeft: 5 }} to="/" className="btn btn-danger">Cancel</Link>
         </form>
       </div>
     );
