@@ -8,3 +8,4 @@ npm-debug.log
 /.idea
 .notes.md
 ./api/logs/error_log.json
+./dist/bundle.js

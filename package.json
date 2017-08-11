@@ -8,6 +8,7 @@
     "node": "8"
   },
   "scripts": {
+    "webpack:build": "./node_modules/.bin/webpack --config webpack.config.js",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "start:api": "node ./api/index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
