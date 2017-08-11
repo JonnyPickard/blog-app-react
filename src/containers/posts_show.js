@@ -3,17 +3,28 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { fetchPost } from '../actions';
+import { fetchPost, deletePost } from '../actions';
 
 class PostsShow extends Component {
   componentDidMount() {
     const { _id } = this.props.match.params;
     this.props.fetchPost(_id);
+    this.onDeleteClick = this.onDeleteClick.bind(this);
+  }
+
+  onDeleteClick() {
+    const { props } = this;
+    const { _id } = props.match.params;
+
+    props.deletePost(_id, () => {
+      props.history.push('/');
+    });
   }
 
   render() {
     const { post, post: { title, categories, content } } = this.props;
 
+    console.log('post', post);
     if (!post) return <div>Loading...</div>;
 
     return (
@@ -48,8 +59,11 @@ class PostsShow extends Component {
 
             {/* DeletePostButton */}
             <div>
-              <button className="btn btn-danger pull-xs-right">
-              Delete Post
+              <button
+                className="btn btn-danger pull-xs-right"
+                onClick={this.onDeleteClick}
+              >
+                Delete Post
               </button>
             </div>
 
@@ -91,4 +105,4 @@ PostsShow.defaultProps = {
 function mapStateToProps({ posts }, ownProps) {
   return { post: posts[ownProps.match.params._id] };
 }
-export default connect(mapStateToProps, { fetchPost })(PostsShow);
+export default connect(mapStateToProps, { fetchPost, deletePost })(PostsShow);

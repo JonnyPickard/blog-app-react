@@ -29,9 +29,9 @@ const createOne = async (postObject) => {
 };
 
 const deleteOneById = async (_id) => {
-  const post = await BlogPost.find({ _id });
+  const post = await BlogPost.findOne({ _id });
 
-  await BlogPost.find({ _id })
+  await BlogPost.findOne({ _id })
     .remove()
     .exec();
 
