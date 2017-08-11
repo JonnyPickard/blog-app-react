@@ -71,7 +71,9 @@ class PostsNew extends Component {
 
     return (
       <div>
-        <h3 className="subtitle">New Post</h3>
+        <div className="subtitle-block">
+          <h3 className="subtitle">New Post</h3>
+        </div>
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <Field
             label="Title"

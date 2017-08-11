@@ -26,29 +26,26 @@ class PostsIndex extends Component {
   render() {
     return (
       <div>
-        <div>
 
-          <div className="subtitle-wrapper">
-            <div className="subtitle-block">
-              {/* ListSubtitle */}
-              <div>
-                <h3 className="subtitle">Posts</h3>
-              </div>
-
-              {/* ButtonNewPost */}
-              <div>
-                <Link id="add-post-button" className="btn btn-primary" to="/posts/new">
-                Add a Post
-                </Link>
-              </div>
-            </div>
+        <div className="subtitle-block">
+          {/* SubtitlePostList:Left */}
+          <div>
+            <h3 className="subtitle">Posts</h3>
           </div>
 
-          {/* PostList */}
-          <ul className="posts-list list-group">
-            {this.renderPosts()}
-          </ul>
+          {/* ButtonNewPost:Right */}
+          <div>
+            <Link id="add-post-button" className="btn btn-primary" to="/posts/new">
+                Add a Post
+            </Link>
+          </div>
         </div>
+
+        {/* PostList */}
+        <ul className="posts-list list-group">
+          {this.renderPosts()}
+        </ul>
+
       </div>
     );
   }

@@ -18,20 +18,18 @@ class PostsShow extends Component {
 
     return (
       <div>
-        <div className="row" style={{ paddingBottom: 10 }}>
-
+        <div className="subtitle-block">
           {/* PostTitle */}
-          <div className="col-xs-6 text-center">
+          <div>
             <h3 className="subtitle">{title}</h3>
           </div>
 
           {/* BackToPostsIndexButton */}
-          <div className="col-xs-6 text-center">
+          <div>
             <Link className="btn btn-primary" to="/">
               Back to Posts
             </Link>
           </div>
-
         </div>
 
         <div>

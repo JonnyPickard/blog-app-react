@@ -2,6 +2,7 @@
   border-radius: 0px;
   background-color: rgb(236, 238, 239);
   margin-top: 50px;
+  font-family: 'Raleway', sans-serif;
 }
 
 #nav-header {
@@ -18,7 +19,6 @@
 
 .btn.btn-primary {
   background-color: blue;
-  float: right;
 }
 
 .subtitle-block {
@@ -27,10 +27,6 @@
   flex-direction: row;
   align-items: center;
   padding-bottom: 10px
-}
-
-.subtitle-wrapper {
-  padding: 0%;
 }
 
 .subtitle-container {
