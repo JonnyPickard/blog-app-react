@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createPost } from '../actions';
 
 const styles = {
   alertStyle: {
@@ -10,18 +12,24 @@ const styles = {
     marginTop: 10,
     marginBotton: 10,
   },
+  cancelButtonStyle: {
+    marginLeft: 5,
+  },
 };
 
 class PostsNew extends Component {
   constructor(props) {
     super(props);
 
-    this.onSubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSubmit(values) {
-    console.log('heretitlehere');
-    console.log(values);
+    const { props } = this;
+
+    props.createPost(values, () => {
+      props.history.push('/');
+    });
   }
 
   renderField({ input, label, meta: { touched, error }, textArea }) {
@@ -82,7 +90,7 @@ class PostsNew extends Component {
             textArea
           />
           <button type="submit" className="btn btn-primary">Submit</button>
-          <Link style={{ marginLeft: 5 }} to="/" className="btn btn-danger">Cancel</Link>
+          <Link style={styles.cancelButtonStyle} to="/" className="btn btn-danger">Cancel</Link>
         </form>
       </div>
     );
@@ -114,4 +122,4 @@ PostsNew.propTypes = {
 export default reduxForm({
   validate,
   form: 'PostsNewForm',
-})(PostsNew);
+})(connect(null, { createPost })(PostsNew));
