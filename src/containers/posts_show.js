@@ -19,23 +19,44 @@ class PostsShow extends Component {
     return (
       <div>
         <div className="subtitle-block">
-          {/* PostTitle */}
-          <div>
-            <h3 className="subtitle">{title}</h3>
+
+          <div className="left-aligned">
+            {/* PostTitle */}
+            <div>
+              <h3 className="subtitle">{title}</h3>
+            </div>
+
+            {/* FlexBoxSpacing */}
+            <div style={{ padding: 5 }} />
+
+            {/* PostDetail */}
+            <div>
+              <h6>Categories: {categories}</h6>
+            </div>
           </div>
 
           {/* BackToPostsIndexButton */}
-          <div>
-            <Link className="btn btn-primary" to="/">
+          <div className="right-aligned">
+            <div>
+              <Link className="btn btn-primary" to="/">
               Back to Posts
-            </Link>
+              </Link>
+            </div>
+
+            {/* FlexBoxSpacing */}
+            <div style={{ padding: 5 }} />
+
+            {/* DeletePostButton */}
+            <div>
+              <button className="btn btn-danger pull-xs-right">
+              Delete Post
+              </button>
+            </div>
+
           </div>
         </div>
 
         <div>
-          {/* PostDetail */}
-          <h6>Categories: {categories}</h6>
-          <hr />
           <div className="blog-post-content">
             <p>{content}</p>
           </div>
