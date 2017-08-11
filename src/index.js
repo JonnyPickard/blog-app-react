@@ -10,22 +10,14 @@ import { PostsIndex, PostsNew, PostsShow } from './containers';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
-const styles = {
-  divStyles: {
-    padding: 10,
-  },
-};
-
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <div style={styles.divStyles}>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/posts/new" component={PostsNew} />
-          <Route path="/posts/:_id" component={PostsShow} />
-          <Route path="/" component={PostsIndex} />
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/posts/new" component={PostsNew} />
+        <Route path="/posts/:_id" component={PostsShow} />
+        <Route path="/" component={PostsIndex} />
+      </Switch>
+    </BrowserRouter>
   </Provider>, document.querySelector('.bundle'),
 );
