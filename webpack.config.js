@@ -1,5 +1,3 @@
-console.log(`THIS: ${__dirname}/dist`);
-
 module.exports = {
   entry: [
     './src/index.js',
