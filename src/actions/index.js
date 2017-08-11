@@ -38,15 +38,11 @@ export function createPost(values, callback) {
 
 // Expected to be passed a history push callback to navigate back to/ re render index
 export function deletePost(_id, callback) {
-  const request = axios.delete(`${ROOT_URL}/posts/${_id}`)
+  axios.delete(`${ROOT_URL}/posts/${_id}`)
     .then(callback);
-
-  console.log('REQ:', request);
-  console.log('id:', _id);
-  console.log('REQ:', request._id);
 
   return {
     type: DELETE_POST,
-    payload: request._id,
+    payload: _id,
   };
 }

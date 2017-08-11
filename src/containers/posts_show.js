@@ -24,7 +24,6 @@ class PostsShow extends Component {
   render() {
     const { post, post: { title, categories, content } } = this.props;
 
-    console.log('post', post);
     if (!post) return <div>Loading...</div>;
 
     return (
@@ -105,4 +104,5 @@ PostsShow.defaultProps = {
 function mapStateToProps({ posts }, ownProps) {
   return { post: posts[ownProps.match.params._id] };
 }
+
 export default connect(mapStateToProps, { fetchPost, deletePost })(PostsShow);
