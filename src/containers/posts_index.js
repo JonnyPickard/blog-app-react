@@ -30,7 +30,7 @@ class PostsIndex extends Component {
 
             {/* ListSubtitle */}
             <div className="col-md-6 text-center">
-              <h3>Posts</h3>
+              <h3 className="subtitle">Posts</h3>
             </div>
 
             {/* ButtonNewPost */}

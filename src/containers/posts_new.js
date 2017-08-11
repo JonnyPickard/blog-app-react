@@ -71,7 +71,7 @@ class PostsNew extends Component {
 
     return (
       <div>
-        <h3 style={{ paddingBottom: 10 }}>New Post</h3>
+        <h3 className="subtitle">New Post</h3>
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <Field
             label="Title"
