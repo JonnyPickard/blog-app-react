@@ -1,5 +1,52 @@
+.bundle {
+  border-radius: 0px;
+  background-color: rgb(236, 238, 239);
+  margin-top: 50px;
+}
+
+#nav-header {
+  color: white;
+  font-family: 'Droid Serif', serif;
+  display: inline-block;
+}
+
 .subtitle {
   border-bottom: 1px solid grey; 
   display: inline-block; 
-  padding-bottom: 5px;
+  width:inherit;
+}
+
+.btn.btn-primary {
+  background-color: blue;
+  float: right;
+}
+
+.subtitle-block {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 10px
+}
+
+.subtitle-wrapper {
+  padding: 0%;
+}
+
+.subtitle-container {
+  float:left;
+  position: relative;
+  padding: 0%;
+}
+
+.navbar {
+  background-color: rgba(136, 3, 116, 1);
+  border-bottom: solid 1px;
+  border-image: -webkit-linear-gradient(rgba(136, 3, 116, 1), rgba(173, 76, 159, 1)) 500;
+}
+
+.blog-post-content {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px
 }

@@ -12,26 +12,20 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 const styles = {
   divStyles: {
-    paddingTop: 10,
-  },
-  headingStyle: {
-    paddingBottom: 10,
+    padding: 10,
   },
 };
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <div style={styles.divStyles}>
-      <h1 style={styles.headingStyle}>Bloggit</h1>
       <BrowserRouter>
-        <div>
-          <Switch>
-            <Route path="/posts/new" component={PostsNew} />
-            <Route path="/posts/:_id" component={PostsShow} />
-            <Route path="/" component={PostsIndex} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/posts/new" component={PostsNew} />
+          <Route path="/posts/:_id" component={PostsShow} />
+          <Route path="/" component={PostsIndex} />
+        </Switch>
       </BrowserRouter>
     </div>
-  </Provider>, document.querySelector('.container'),
+  </Provider>, document.querySelector('.bundle'),
 );

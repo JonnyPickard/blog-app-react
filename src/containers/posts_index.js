@@ -15,7 +15,9 @@ class PostsIndex extends Component {
     return (
       _.map(this.props.posts, post => (
         <li className="list-group-item" key={post._id}>
-          {post.title}
+          <Link to={`/posts/${post._id}`}>
+            {post.title}
+          </Link>
         </li>
       ))
     );
@@ -26,24 +28,24 @@ class PostsIndex extends Component {
       <div>
         <div>
 
-          <div className="row" style={{ paddingBottom: 10 }}>
+          <div className="subtitle-wrapper">
+            <div className="subtitle-block">
+              {/* ListSubtitle */}
+              <div>
+                <h3 className="subtitle">Posts</h3>
+              </div>
 
-            {/* ListSubtitle */}
-            <div className="col-md-6 text-center">
-              <h3 className="subtitle">Posts</h3>
+              {/* ButtonNewPost */}
+              <div>
+                <Link id="add-post-button" className="btn btn-primary" to="/posts/new">
+                Add a Post
+                </Link>
+              </div>
             </div>
-
-            {/* ButtonNewPost */}
-            <div className="col-md-6 text-center">
-              <Link style={{ float: 'right' }} className="pull-right btn btn-primary" to="/posts/new">
-                  Add a Post
-              </Link>
-            </div>
-
           </div>
 
           {/* PostList */}
-          <ul className="list-group">
+          <ul className="posts-list list-group">
             {this.renderPosts()}
           </ul>
         </div>

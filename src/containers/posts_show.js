@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import { fetchPost } from '../actions';
 
 class PostsShow extends Component {
@@ -16,10 +18,29 @@ class PostsShow extends Component {
 
     return (
       <div>
+        <div className="row" style={{ paddingBottom: 10 }}>
+
+          {/* PostTitle */}
+          <div className="col-xs-6 text-center">
+            <h3 className="subtitle">{title}</h3>
+          </div>
+
+          {/* BackToPostsIndexButton */}
+          <div className="col-xs-6 text-center">
+            <Link className="btn btn-primary" to="/">
+              Back to Posts
+            </Link>
+          </div>
+
+        </div>
+
         <div>
-          <h3 className="subtitle">{title}</h3>
+          {/* PostDetail */}
           <h6>Categories: {categories}</h6>
-          <p>{content}</p>
+          <hr />
+          <div className="blog-post-content">
+            <p>{content}</p>
+          </div>
         </div>
       </div>
     );
