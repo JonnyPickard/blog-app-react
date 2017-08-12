@@ -31,7 +31,16 @@ app.use(new RateLimit({
 
 app.use(bodyParser.json());
 
-app.use(cors());
+const whitelist = 'https://jonnys-blog-react-front-end.herokuapp.com';
+const corsOptions = {
+  origin(origin, callback) {
+    if (whitelist === origin) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+};
+app.use(cors(corsOptions));
 
 app.use('/api', blogPostRoute);
 app.use('/private', healthCheckRoute);
