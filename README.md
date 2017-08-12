@@ -6,7 +6,7 @@ This is a React Redux blogging SPA web app. The back end api is built with Node.
 Try It Out!
 ----------
 
-The site is currently hosted at: https://jonnys-blog-react-front-end.herokuapp.com/posts/new just click the link! =] 
+The site is currently hosted at: https://jonnys-blog-react-front-end.herokuapp.com just click the link! =] 
 
 Mockup
 ------
