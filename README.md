@@ -17,13 +17,17 @@ Screenshots
 -----------
 
 ### PostsIndex Page
-![PostsIndexDesktop](https://github.com/JonnyPickard/blog-app-react/blob/master/docs/PostsIndexDesktop.png)
+![PostsIndexDesktop](https://github.com/JonnyPickard/blog-app-react/blob/master/docs/PostsIndexDesktop.png)  
+  
+
 ![PostsIndexMobile](https://github.com/JonnyPickard/blog-app-react/blob/master/docs/PostsIndexMobile.png)
 
 ### PostsNew Page
-![PostsNewDesktop](https://github.com/JonnyPickard/blog-app-react/blob/master/docs/PostsNewDesktop.png)
+![PostsNewDesktop](https://github.com/JonnyPickard/blog-app-react/blob/master/docs/PostsNewDesktop.png)  
+
 ![PostsNewMobile](https://github.com/JonnyPickard/blog-app-react/blob/master/docs/PostsNewMobile.png)
 
 ### PostsShow Page
-![PostsShowDesktop](https://github.com/JonnyPickard/blog-app-react/blob/master/docs/PostsShowDesktop.png)
+![PostsShowDesktop](https://github.com/JonnyPickard/blog-app-react/blob/master/docs/PostsShowDesktop.png)  
+
 ![PostsShowMobile](https://github.com/JonnyPickard/blog-app-react/blob/master/docs/PostsShowMobile.png)
