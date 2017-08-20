@@ -40,7 +40,7 @@ class PostsIndex extends Component {
 
   render() {
     return (
-      <div>
+      <div className="posts-index">
 
         <div className="subtitle-block">
           {/* SubtitlePostList:Left */}

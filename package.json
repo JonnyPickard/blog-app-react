@@ -11,7 +11,7 @@
     "webpack:build": "./node_modules/.bin/webpack --config webpack.config.js",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "start:api": "node ./api/index.js",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+    "test": "ROOT_URL=http://localhost:3000/api mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
     "test:api": "NODE_ENV=test node_modules/.bin/mocha --recursive ./api/",
     "test:api_debug": "NODE_ENV=debug node_modules/.bin/mocha --recursive ./api/"
@@ -19,12 +19,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "axios-mock-adapter": "^1.9.0",
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "chai": "^3.5.0",
+    "chai-enzyme": "^0.8.0",
     "chai-jquery": "^2.0.0",
+    "enzyme": "^2.9.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
@@ -33,6 +36,7 @@
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
+    "sinon": "^3.2.1",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
@@ -44,6 +48,7 @@
     "eslint": "^4.3.0",
     "express": "^4.15.3",
     "express-rate-limit": "^2.9.0",
+    "history": "^4.6.3",
     "lodash": "^3.10.1",
     "mongodb": "^2.2.30",
     "mongoose": "4.10.8",
@@ -55,6 +60,7 @@
     "react-router-dom": "^4.0.0",
     "redux": "^3.0.4",
     "redux-form": "^6.6.3",
+    "redux-mock-store": "^1.2.3",
     "redux-promise": "^0.5.3",
     "supertest": "^3.0.0",
     "winston": "^2.3.1"

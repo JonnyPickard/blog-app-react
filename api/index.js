@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 const whitelist = 'https://jonnys-blog-react-front-end.herokuapp.com';
 const corsOptions = {
   origin(origin, callback) {
-    if (whitelist === origin) {
+    if (NODE_ENV === 'test' || whitelist === origin) {
       return callback(null, true);
     }
     return callback(new Error('Not allowed by CORS'));

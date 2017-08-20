@@ -5,7 +5,7 @@ export const FETCH_POST = 'fetch_post';
 export const CREATE_POST = 'create_post';
 export const DELETE_POST = 'delete_post';
 
-const ROOT_URL = 'https://jonnys-blog-app-react.herokuapp.com/api';
+const ROOT_URL = process.env.ROOT_URL || 'https://jonnys-blog-app-react.herokuapp.com/api';
 
 export function fetchPosts() {
   const request = axios.get(`${ROOT_URL}/posts`);
